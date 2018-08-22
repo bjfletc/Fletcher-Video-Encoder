@@ -23,3 +23,7 @@ class Video:
         else:
             return video_file_size_in_megabytes
 
+
+if __name__ == '__main__':
+    test_video_0 = Video('W:\Brandon J. Fletcher\Videos\YouTube\MKBHD\Talking Tech with Elon Musk!.mp4')
+    print(str(test_video_0.file_size()))
