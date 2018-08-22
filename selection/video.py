@@ -14,7 +14,7 @@ class Video:
         self.path_to_video = path_to_video
 
     # separate the video from the path
-    def video_title(self):
+    def title(self):
         # current build is supporting Windows 10...
         # future builds will need logic to determine
         # if on macOS or Linux...
@@ -37,4 +37,4 @@ class Video:
 if __name__ == '__main__':
     test_video_0 = Video('W:\Brandon J. Fletcher\Videos\YouTube\MKBHD\Talking Tech with Elon Musk!.mp4')
     print(test_video_0.file_size())
-    print(test_video_0.video_title())
+    print(test_video_0.title())
