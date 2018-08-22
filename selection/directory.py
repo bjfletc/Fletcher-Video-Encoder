@@ -6,3 +6,4 @@
 """directory.py: When user selects to encode an entire directory, this will return a list of video objects."""
 
 
+# TODO: create class that can create a list of video objects given a directory to encode.
