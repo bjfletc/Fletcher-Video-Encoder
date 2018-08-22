@@ -36,8 +36,9 @@ class Video:
     # determine starting format of video
     def format(self):
         video = self.title()
-        format_type = video[video.rfind('.') + 1:]
+        format_type = video[video.rfind('.'):]
         return format_type
+
 
 if __name__ == '__main__':
     test_video_0 = Video('W:\Brandon J. Fletcher\Videos\YouTube\MKBHD\Talking Tech with Elon Musk!.mp4')
