@@ -42,6 +42,7 @@ class Video:
 
 if __name__ == '__main__':
     test_video_0 = Video('W:\Brandon J. Fletcher\Videos\YouTube\MKBHD\Talking Tech with Elon Musk!.mp4')
+    # ^ Great video BTW, should check it out if you haven't yet: https://youtu.be/MevKTPN4ozw
     print(test_video_0.file_size())
     print(test_video_0.title())
     print(test_video_0.format())
