@@ -33,8 +33,14 @@ class Video:
         else:
             return str(round(video_file_size_in_megabytes, 2)) + ' megabytes'
 
+    # determine starting format of video
+    def format(self):
+        video = self.title()
+        format_type = video[video.rfind('.') + 1:]
+        return format_type
 
 if __name__ == '__main__':
     test_video_0 = Video('W:\Brandon J. Fletcher\Videos\YouTube\MKBHD\Talking Tech with Elon Musk!.mp4')
     print(test_video_0.file_size())
     print(test_video_0.title())
+    print(test_video_0.format())
