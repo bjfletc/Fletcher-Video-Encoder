@@ -5,15 +5,24 @@
 
 """splash_screen.py: When the program is run, will be the screen that they see first."""
 from tkinter import *
-from tkinter.filedialog import askopenfile, askdirectory
+# from tkinter.filedialog import askopenfile, askdirectory # will need later on
 
 
-class SplashScreen:
+class SplashScreen(Frame):
+    def __init__(self, parent=None):
+        Frame.__init__(self, parent)
+        self.pack()
+        self.data = 42
+        self.make_widgets()
 
-    def name(self):
-        return 'Hello GUI World!'
+    def make_widgets(self):
+        widget = Button(self, text='Hello frame world!', command=self.message)
+        widget.pack(side=LEFT)
+
+    def message(self):
+        self.data += 1
+        return print('Hello frame world %s!' % self.data)
 
 
 if __name__ == '__main__':
-    test_GUI = SplashScreen()
-    print(test_GUI.name())
+    SplashScreen().mainloop()
