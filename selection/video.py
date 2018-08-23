@@ -1,5 +1,5 @@
 # Author: Brandon J. Fletcher
-# Date  : Wednesday, Aug 22, 2018
+# Created  : Wednesday, Aug 22, 2018
 # E-mail: brandonjfletcher@gmail.com
 # GitHub: https://github.com/bjfletc
 
