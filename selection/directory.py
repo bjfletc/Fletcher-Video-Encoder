@@ -11,6 +11,7 @@ from decimal import Decimal
 # TODO(2.1): create a class variable for size that can be saved from videos
 
 
+# TODO(5.0): maybe change name of this class to specify VideoDirectory as it isn't a general case directory?
 class Directory:
     def __init__(self, path_to_directory):
         self.path_to_directory = path_to_directory
