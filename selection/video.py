@@ -13,6 +13,10 @@ class Video:
     def __init__(self, path_to_video):
         self.path_to_video = path_to_video
 
+    # return complete path to video
+    def complete_path(self):
+        return self.path_to_video
+
     # separate the video from the path
     def title(self):
         # current build is supporting Windows 10...
