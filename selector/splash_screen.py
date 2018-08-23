@@ -23,19 +23,22 @@ class SplashScreen(Frame):
         video_button.pack(side=RIGHT)
 
     # TODO: Create methods for each button to create it's own object type
-    # TODO: Figure out warning from IntelliJ IDEA...
+    # COMPLETED: Figure out warning from IntelliJ IDEA... @staticmethod
 
     # returns directory selected from file dialog
+    @staticmethod
     def directory_button_command(self):
         path_to_directory = askdirectory()
         chosen_directory = directory.Directory(path_to_directory)
         return chosen_directory
 
     # returns video selected from file dialog
+    @staticmethod
     def video_button_command(self):
         path_to_video = askopenfilename()
         chosen_video = video.Video(path_to_video)
         return chosen_video
+
 
 if __name__ == '__main__':
     SplashScreen().mainloop()
