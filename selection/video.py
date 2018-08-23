@@ -31,6 +31,7 @@ class Video:
         video_file_size_in_bytes = os.path.getsize(self.path_to_video)
         video_file_size_in_megabytes = Decimal(video_file_size_in_bytes / 1000000.00)
 
+        # TODO(4.0): figure out why my conversion and Windows 10 properties say different sizes for files...
         if video_file_size_in_megabytes >= 1000:
             video_file_size_in_gigabytes = Decimal(video_file_size_in_megabytes / 1000.00)
             return str(round(video_file_size_in_gigabytes, 2)) + ' gigabytes'
