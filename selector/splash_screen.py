@@ -8,34 +8,29 @@ from tkinter import *
 from tkinter.filedialog import askopenfilename, askdirectory # will need later on
 from selection import directory, video
 
-
-class SplashScreen(Frame):
-    def __init__(self, parent=None):
-        Frame.__init__(self, parent)
-        self.pack()
-        self.make_widgets()
-
-    def make_widgets(self):
-        directory_button = Button(self, text='Directory', command=self.directory_button_command)
-        directory_button.pack(side=LEFT)
-
-        video_button = Button(self, text='Video', command=self.video_button_command)
-        video_button.pack(side=RIGHT)
-
-    # returns directory selected from file dialog
-    @staticmethod
-    def directory_button_command():
-        path_to_directory = askdirectory()
-        chosen_directory = directory.Directory(path_to_directory)
-        return chosen_directory
-
-    # returns video selected from file dialog
-    @staticmethod
-    def video_button_command():
-        path_to_video = askopenfilename()
-        chosen_video = video.Video(path_to_video)
-        return chosen_video
+root = Tk()
+root.geometry('500x500')
+root.title('Fletcher Video Encoder')
 
 
-if __name__ == '__main__':
-    SplashScreen().mainloop()
+# returns directory selected from file dialog
+def directory_button_command():
+    path_to_directory = askdirectory()
+    chosen_directory = directory.Directory(path_to_directory)
+    return chosen_directory
+
+
+# returns video selected from file dialog
+def video_button_command():
+    path_to_video = askopenfilename()
+    chosen_video = video.Video(path_to_video)
+    return chosen_video
+
+
+directory_button = Button(root, text='Directory', command=directory_button_command)
+directory_button.pack(side=LEFT, expand=YES)
+
+video_button = Button(root, text='Video', command=video_button_command)
+video_button.pack(side=RIGHT, expand=YES)
+
+root.mainloop()
