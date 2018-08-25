@@ -19,7 +19,9 @@ def ffmpeg_video_cmd(video_path=Video('')):
     path_to_video_to_encode = video_path.complete_path()
     video_to_encode = video_path.title()
     index_of_format = video_to_encode.rfind('.')
-    ffmpeg_cmd = 'ffmpeg -i ' + '"' + path_to_video_to_encode + '"' + ' -c:v libx264 -vf scale=1280:720 -r 30 -c:a copy ' + '"' + OUTPUT + video_to_encode.title()[:index_of_format] + '.mp4' + '"'
+    ffmpeg_cmd = 'ffmpeg -i ' + '"' + path_to_video_to_encode + '"' + \
+                 ' -c:v libx264 -vf scale=1280:720 -r 30 -c:a copy ' + '"' \
+                 + OUTPUT + video_to_encode.title()[:index_of_format] + '.mp4' + '"'
     return ffmpeg_cmd
 
 
@@ -27,7 +29,8 @@ def start_subprocess(command):
     cmd = command
     ffmpeg_pipe = subprocess.Popen(cmd, stdin=subprocess.PIPE,
                                    stdout=subprocess.PIPE,
-                                   stderr=subprocess.PIPE, shell=True, universal_newlines=True)
+                                   stderr=subprocess.PIPE, shell=True,
+                                   universal_newlines=True)
 
     ferr = ffmpeg_pipe.stderr
     for line in ferr:
