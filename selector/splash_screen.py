@@ -19,7 +19,7 @@ root.title('Fletcher Video Encoder')
 # TODO(6): if button is pressed, open a new window for encoding that has the folder name
 # returns directory selected from file dialog
 def directory_button_command():
-    path_to_directory = askdirectory()
+    path_to_directory = askdirectory(initialdir='W:\Brandon J. Fletcher\Videos')
     chosen_directory = directory.Directory(path_to_directory)
     print(path_to_directory)
     return chosen_directory
@@ -28,7 +28,8 @@ def directory_button_command():
 # TODO(7): if button is pressed, open a new window for encoding that has the video name
 # returns video selected from file dialog
 def video_button_command():
-    path_to_video = askopenfilename()
+    path_to_video = askopenfilename(initialdir='W:\Brandon J. Fletcher\Videos', filetypes = (('MP4', '*.mp4'),
+                                    ('AVI', '*.avi'), ('MKV', '*.mkv')))
     chosen_video = video.Video(path_to_video)
     print(path_to_video)
     return chosen_video
