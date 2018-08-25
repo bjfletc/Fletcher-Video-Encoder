@@ -21,7 +21,7 @@ root.title('Fletcher Video Encoder')
 def directory_button_command():
     path_to_directory = askdirectory()
     chosen_directory = directory.Directory(path_to_directory)
-    print(chosen_directory)
+    print(path_to_directory)
     return chosen_directory
 
 
@@ -30,7 +30,7 @@ def directory_button_command():
 def video_button_command():
     path_to_video = askopenfilename()
     chosen_video = video.Video(path_to_video)
-    print(chosen_video)
+    print(path_to_video)
     return chosen_video
 
 
