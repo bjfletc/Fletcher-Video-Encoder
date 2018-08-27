@@ -21,8 +21,8 @@ def directory_button_command():
     path_to_directory = askdirectory(initialdir='W:\Brandon J. Fletcher\Videos')
     chosen_directory = directory.Directory(path_to_directory)
     print(path_to_directory)
-    name_of_file_or_directory_label.config(text='Encoding: ' + chosen_directory.name())
-    encoder.start_subprocess(encoder.ffmpeg_video_cmd(chosen_directory.videos()[0]))
+    name_of_file_or_directory_label.config(text='Encoding: ' + chosen_directory.videos()[0])
+    encoder.start_thread(encoder.ffmpeg_video_cmd(chosen_directory.videos()[0]))
     return chosen_directory
 
 
@@ -34,8 +34,8 @@ def video_button_command():
     chosen_video = video.Video(path_to_video)
     print(path_to_video)
     print(chosen_video.title())
-    name_of_file_or_directory_label.config(text='Encoding: ' + chosen_video.title())
-    encoder.start_subprocess(encoder.ffmpeg_video_cmd(chosen_video))
+    name_of_file_or_directory_label.config(text='Encoding: ' + chosen_video.complete_path())
+    encoder.start_thread(encoder.ffmpeg_video_cmd(chosen_video))
     return chosen_video
 
 
