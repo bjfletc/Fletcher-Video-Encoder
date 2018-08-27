@@ -12,12 +12,6 @@ from tkinter.filedialog import askopenfilename, askdirectory # will need later o
 from selection import directory, video
 # TODO(5): learn how to create a SplashScreen OOP class
 
-root = Tk()
-root.geometry('500x500')
-root.iconbitmap('../img/fletcher-family-crest.jpg.ico')
-root.title('Fletcher Video Encoder')
-
-
 # TODO(6): if button is pressed, open a new window for encoding that has the folder name
 # returns directory selected from file dialog
 def directory_button_command():
@@ -36,6 +30,13 @@ def video_button_command():
     print(path_to_video)
     return chosen_video
 
+
+root = Tk()
+root.geometry('500x500')
+root.iconbitmap('../img/fletcher-family-crest.jpg.ico')
+root.title('Fletcher Video Encoder')
+
+# add GUI components
 
 directory_button = Button(root, text='Directory', command=directory_button_command)
 directory_button.pack(side=LEFT, expand=YES)
