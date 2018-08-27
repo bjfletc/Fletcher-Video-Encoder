@@ -4,11 +4,13 @@
 # GitHub: https://github.com/bjfletc
 
 """splash_screen.py: When the program is run, will be the screen that they see first."""
+import sys
+sys.path.append('W:\Brandon J. Fletcher\Computer Programming\Code\Python\Fletcher Video Encoder')
+
 from tkinter import *
 from tkinter.filedialog import askopenfilename, askdirectory # will need later on
 from selection import directory, video
 # TODO(5): learn how to create a SplashScreen OOP class
-
 
 root = Tk()
 root.geometry('500x500')
