@@ -27,7 +27,7 @@ class Directory:
 
         # create a list of Video objects
         for file in names_of_videos_in_directory:
-            list_of_video.append(Video(self.path_to_directory + '\\' + file))
+            list_of_video.append(Video(self.path_to_directory + '/' + file))
 
         return list_of_video
 

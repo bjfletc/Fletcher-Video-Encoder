@@ -6,7 +6,7 @@
 """encoder.py: will be the main method for encoding."""
 import subprocess
 from selection.video import Video
-# TODO(1): learn how to pipe the process of encoding from cmd
+# COMPLETE(1): learn how to pipe the process of encoding from cmd
 # TODO(2): if elif logic for if it is a directory or a video being encoded
 # TODO(4): create method for output file location
 
@@ -17,10 +17,12 @@ print(OUTPUT)
 def ffmpeg_video_cmd(video_path=Video('')):
     path_to_video_to_encode = video_path.complete_path()
     video_to_encode = video_path.title()
+    print(video_to_encode)
     index_of_format = video_to_encode.rfind('.')
     ffmpeg_cmd = 'ffmpeg -i ' + '"' + path_to_video_to_encode + '"' + \
                  ' -c:v libx264 -vf scale=1280:720 -r 30 -c:a copy ' + '"' \
-                 + OUTPUT + video_to_encode.title()[:index_of_format] + '.mp4' + '"'
+                 + OUTPUT + video_to_encode[:index_of_format] + '.mp4' + '"'
+    print(ffmpeg_cmd)
     return ffmpeg_cmd
 
 

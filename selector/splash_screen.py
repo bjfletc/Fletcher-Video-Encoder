@@ -10,7 +10,9 @@ sys.path.append('W:\Brandon J. Fletcher\Computer Programming\Code\Python\Fletche
 from tkinter import *
 from tkinter.filedialog import askopenfilename, askdirectory # will need later on
 from selection import directory, video
+from encoder import encoder
 # TODO(5): learn how to create a SplashScreen OOP class
+# TODO(1): figure out how to stop GUI from "Not Responding" when encoder starts...
 
 
 # COMPLETED(6): if button is pressed, open a new window for encoding that has the folder name
@@ -20,6 +22,7 @@ def directory_button_command():
     chosen_directory = directory.Directory(path_to_directory)
     print(path_to_directory)
     name_of_file_or_directory_label.config(text='Encoding: ' + chosen_directory.name())
+    encoder.start_subprocess(encoder.ffmpeg_video_cmd(chosen_directory.videos()[0]))
     return chosen_directory
 
 
@@ -30,7 +33,9 @@ def video_button_command():
                                     ('AVI', '*.avi'), ('MKV', '*.mkv')))
     chosen_video = video.Video(path_to_video)
     print(path_to_video)
+    print(chosen_video.title())
     name_of_file_or_directory_label.config(text='Encoding: ' + chosen_video.title())
+    encoder.start_subprocess(encoder.ffmpeg_video_cmd(chosen_video))
     return chosen_video
 
 
