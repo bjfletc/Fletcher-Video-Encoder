@@ -16,7 +16,7 @@ class Directory:
 
     # specify the name of the folder
     def name(self):
-        index_of_end_of_path_to_directory = (self.path_to_directory.rfind('\\')) + 1
+        index_of_end_of_path_to_directory = (self.path_to_directory.rfind('/')) + 1
         name_of_directory = self.path_to_directory[index_of_end_of_path_to_directory:]
         return name_of_directory
 
