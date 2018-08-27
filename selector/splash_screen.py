@@ -11,7 +11,7 @@ from tkinter import *
 from tkinter.filedialog import askopenfilename, askdirectory # will need later on
 from selection import directory, video
 from encoder import encoder
-# TODO(5): learn how to create a SplashScreen OOP class
+# TODO(4): learn how to create a SplashScreen OOP class
 # TODO(1): figure out how to stop GUI from "Not Responding" when encoder starts...
 
 

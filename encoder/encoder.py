@@ -8,7 +8,7 @@ import subprocess
 from selection.video import Video
 # COMPLETE(1): learn how to pipe the process of encoding from cmd
 # TODO(2): if elif logic for if it is a directory or a video being encoded
-# TODO(4): create method for output file location
+# TODO(3): create method for output file location
 
 OUTPUT = 'C:\\Users\\Brandon\\Videos\\'
 print(OUTPUT)
