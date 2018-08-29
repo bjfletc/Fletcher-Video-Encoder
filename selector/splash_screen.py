@@ -6,13 +6,11 @@
 """splash_screen.py: When the program is run, will be the screen that they see first."""
 import sys
 sys.path.append('W:\Brandon J. Fletcher\Computer Programming\Code\Python\Fletcher Video Encoder')
-
 from tkinter import *
 from tkinter.filedialog import askopenfilename, askdirectory # will need later on
 from selection import directory, video
 from encoder import encoder
 # TODO(4): learn how to create a SplashScreen OOP class
-# TODO(1): figure out how to stop GUI from "Not Responding" when encoder starts...
 
 
 # COMPLETED(6): if button is pressed, open a new window for encoding that has the folder name
@@ -22,7 +20,6 @@ def directory_button_command():
     chosen_directory = directory.Directory(path_to_directory)
     print(path_to_directory)
     name_of_file_or_directory_label.config(text='Encoding: ' + chosen_directory.videos()[0])
-    encoder.start_thread(encoder.ffmpeg_video_cmd(chosen_directory.videos()[0]))
     return chosen_directory
 
 
@@ -35,7 +32,6 @@ def video_button_command():
     print(path_to_video)
     print(chosen_video.title())
     name_of_file_or_directory_label.config(text='Encoding: ' + chosen_video.complete_path())
-    encoder.start_thread(encoder.ffmpeg_video_cmd(chosen_video))
     return chosen_video
 
 
@@ -43,6 +39,7 @@ root = Tk()
 root.geometry('500x500')
 root.iconbitmap('../img/fletcher-family-crest.jpg.ico')
 root.title('Fletcher Video Encoder')
+# root.protocol('WM_DELETE_WIDNOW', encoder.stop_thread(running_thread))
 
 # add GUI components
 
