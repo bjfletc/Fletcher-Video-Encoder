@@ -18,3 +18,7 @@ def ffmpeg_cmd(video):
           + OUTPUT + video_to_encode[:index_of_format] + '.mp4' + '"'
     print(cmd)
     return cmd
+
+
+if __name__ == '__main__':
+    print('Nothing to See Here...')

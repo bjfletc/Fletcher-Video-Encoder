@@ -25,3 +25,7 @@ def start_subprocess(command):
     ffmpeg_pipe.wait()
     if ffmpeg_pipe.returncode != 0:
         raise subprocess.CalledProcessError(ffmpeg_pipe.returncode, cmd)
+
+
+if __name__ == '__main__':
+    print('Nothing to See Here...')
