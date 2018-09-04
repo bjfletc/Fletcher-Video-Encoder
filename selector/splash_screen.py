@@ -32,6 +32,7 @@ def video_button_command():
     print(path_to_video)
     print(chosen_video.title())
     name_of_file_or_directory_label.config(text='Encoding: ' + chosen_video.complete_path())
+    encoder.start_thread(encoder.ffmpeg_video_cmd(chosen_video)) # runs ffmpeg in a thread
     return chosen_video
 
 
