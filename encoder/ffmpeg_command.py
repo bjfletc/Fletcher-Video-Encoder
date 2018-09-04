@@ -4,11 +4,12 @@
 # GitHub: https://github.com/bjfletc
 
 """command.py: will return the string version of the ffmpeg command."""
+from selection.video import Video
 
 OUTPUT = 'C:\\Users\\Brandon\\Videos\\'
 
 
-def ffmpeg_cmd(video):
+def ffmpeg_cmd(video=Video('')):
     path_to_video_to_encode = video.complete_path()
     video_to_encode = video.title()
     print('Video = ' + video_to_encode)

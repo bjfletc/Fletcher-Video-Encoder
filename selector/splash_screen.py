@@ -40,7 +40,7 @@ root = Tk()
 root.geometry('500x500')
 root.iconbitmap('../img/fletcher-family-crest.jpg.ico')
 root.title('Fletcher Video Encoder')
-# root.protocol('WM_DELETE_WIDNOW', encoder.stop_thread(running_thread))
+root.protocol('WM_DELETE_WIDNOW', encoder.stop_thread())
 
 # add GUI components
 

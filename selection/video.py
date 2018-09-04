@@ -23,6 +23,8 @@ class Video:
         # future builds will need logic to determine
         # if on macOS or Linux...
         end_of_path = self.path_to_video.rfind('/')
+        if self.path_to_video.rfind('/') == -1:
+            end_of_path = self.path_to_video.rfind('\\')
         title = self.path_to_video[(end_of_path + 1):]
         return title
 
