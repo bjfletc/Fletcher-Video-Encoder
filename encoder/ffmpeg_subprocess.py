@@ -8,10 +8,13 @@
 
 import subprocess
 
+global ffmpeg_pipe # added for test0
+
 
 def start_subprocess(command):
     cmd = command
     # test multiprocessing.fork()
+    global ffmpeg_pipe  #added for test0
     ffmpeg_pipe = subprocess.Popen(cmd, stdin=subprocess.PIPE,
                                    stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE, shell=True,
