@@ -14,7 +14,8 @@ import ctypes # added for test0
 # TODO(3): create method for output file location
 # TODO(1): need a way to stop the thread when the Windows is closed.
 
-ffmpeg_pipe = ffmpeg_subprocess.ffmpeg_pipe
+#ffmpeg_pipe = ffmpeg_subprocess.ffmpeg_pipe
+
 
 def start_thread(encoding):
     t = threading.Thread(target=ffmpeg_subprocess.start_subprocess, args=(encoding,))
