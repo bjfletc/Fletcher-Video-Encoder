@@ -17,9 +17,6 @@ import fletcher_encoder
 # TODO(4): learn how to create a SplashScreen OOP class
 fletcher_video_encoder = fletcher_encoder.Encoder()
 
-# COMPLETED(6): if button is pressed, open a new window for encoding that has the folder name
-# returns directory selected from file dialog
-
 
 def directory_button_command():
     path_to_directory = askdirectory(initialdir='W:\Brandon J. Fletcher\Videos')
@@ -29,8 +26,6 @@ def directory_button_command():
     return chosen_directory
 
 
-# COMPLETED(7): if button is pressed, open a new window for encoding that has the video name
-# returns video selected from file dialog
 def video_button_command():
     path_to_video = askopenfilename(initialdir='W:\Brandon J. Fletcher\Videos', filetypes = (('MP4', '*.mp4'),
                                     ('AVI', '*.avi'), ('MKV', '*.mkv')))
@@ -50,16 +45,17 @@ root.title('Fletcher Video Encoder')
 
 
 # adding for TEST0
-def doSomething():
+def do_something():
     # check if saving
     # if not:
     fletcher_video_encoder.stop_subprocess_thread()
     root.destroy()
 
 
-root.protocol('WM_DELETE_WINDOW', doSomething)  # root is your root window
+root.protocol('WM_DELETE_WINDOW', do_something)  # root is your root window
 
 # add GUI components
+# TODO Create Separate Class for GUI
 
 label_frame = Frame(root)
 label_frame.pack(side=TOP, fill=X)
