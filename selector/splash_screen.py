@@ -5,11 +5,13 @@
 
 """splash_screen.py: When the program is run, will be the screen that they see first."""
 import sys
-sys.path.append('W:\Brandon J. Fletcher\Computer Programming\Code\Python\Fletcher Video Encoder')
+import os
+path_to_append = os.getcwd() # generically append path for any user who downloads software...
+sys.path.append(path_to_append)
 from tkinter import *
 from tkinter.filedialog import askopenfilename, askdirectory # will need later on
 from selection import directory, video
-from encoder import ffmpeg_command, ffmpeg_encoder
+from encoder import ffmpeg_command
 import fletcher_encoder
 # TODO(4): learn how to create a SplashScreen OOP class
 fletcher_video_encoder = fletcher_encoder.Encoder()
