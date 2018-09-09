@@ -14,10 +14,10 @@ from tkinter.filedialog import askopenfilename, askdirectory # will need later o
 from selection import directory, video
 from encoder import ffmpeg_command
 import fletcher_encoder
-# TODO(4): learn how to create a SplashScreen OOP class
+# TODO: learn how to create a SplashScreen OOP class
 fletcher_video_encoder = fletcher_encoder.Encoder()
 
-
+# TODO: create module for each command... open in Users default Videos...
 def directory_button_command():
     path_to_directory = askdirectory(initialdir='W:\Brandon J. Fletcher\Videos')
     chosen_directory = directory.Directory(path_to_directory)

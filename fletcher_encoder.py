@@ -42,6 +42,7 @@ class Encoder:
         t.start()
         return t
 
+    # TODO: learn leaner way to stop subprocess/thread maybe its own class?
     def stop_subprocess_thread(self):
         # warning because it says it cannot find, but is a member of subprocess.Popen...
         self.ffmpeg_pipe.terminate()

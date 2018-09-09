@@ -6,6 +6,7 @@
 """command.py: will return the string version of the ffmpeg command."""
 from selection.video import Video
 
+# TODO: Change from Static Output Location...
 OUTPUT = 'C:\\Users\\Brandon\\Videos\\'
 
 
