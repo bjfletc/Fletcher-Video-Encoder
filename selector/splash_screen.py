@@ -6,8 +6,11 @@
 """splash_screen.py: When the program is run, will be the screen that they see first."""
 import sys
 import os
-path_to_append = os.getcwd() # generically append path for any user who downloads software...
+path_to_append = os.getcwd()
+path_to_append = path_to_append[0:path_to_append.rfind('\\')]
 sys.path.append(path_to_append)
+print(path_to_append)
+#sys.path.append('W:\Brandon J. Fletcher\Computer Programming\Code\Python\Fletcher Video Encoder')
 from tkinter import *
 from tkinter.filedialog import askopenfilename, askdirectory # will need later on
 from selection import directory, video
