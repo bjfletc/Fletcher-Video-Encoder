@@ -8,7 +8,9 @@
 import threading
 import subprocess
 import sys
-sys.path.append('W:\Brandon J. Fletcher\Computer Programming\Code\Python\Fletcher Video Encoder')
+import os
+dir_to_append = os.getcwd()
+sys.path.append(dir_to_append)
 
 
 class Encoder:
