@@ -6,6 +6,7 @@
 """splash_screen.py: When the program is run, will be the screen that they see first."""
 import sys
 import os
+import threading
 path_to_append = os.getcwd()
 path_to_append = path_to_append[0:path_to_append.rfind('\\')]
 sys.path.append(path_to_append)
@@ -39,21 +40,10 @@ def video_button_command():
     return chosen_video
 
 
-# sloppy code... refactor later...
-current_directory = os.getcwd()
-os.chdir('..')
-program_root_directory = os.getcwd()
-print(program_root_directory)
-
-if os.path.isdir('ffmpeg') == False:
-    ffmpeg_downloader.download_ffmpeg()
-
-os.chdir(current_directory)
-
 root = Tk()
 root.geometry('500x500')
 root.iconbitmap('../img/fletcher-family-crest.jpg.ico')
-root.title('Fletcher Video Encoder')
+root.title('Fletcher Video Encoder -- Installing FFMPEG...')
 
 
 # adding for TEST0
@@ -90,5 +80,22 @@ video_button_frame.pack(side=RIGHT, fill=Y, ipadx=125)
 video_button = Button(video_button_frame, text='Video', command=video_button_command)
 video_button.pack(anchor='center', expand=YES)
 
+# sloppy code... refactor later...
+current_directory = os.getcwd()
+os.chdir('..')
+program_root_directory = os.getcwd()
+print(program_root_directory)
+
+
+if os.path.isdir('ffmpeg') == False:
+    download_thread = threading.Thread(target=ffmpeg_downloader.download_ffmpeg())
+    download_thread.daemon = True
+    name_of_file_or_directory_label.config(text='Please wait while I install ffmpeg...')
+    download_thread.start()
+    name_of_file_or_directory_label.config(text='Finished... you may choose a Video now...')
+
+root.title('Fletcher Video Encoder')
+
+os.chdir(current_directory)
 
 root.mainloop()
