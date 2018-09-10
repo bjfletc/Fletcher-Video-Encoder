@@ -5,6 +5,8 @@
 
 """command.py: will return the string version of the ffmpeg command."""
 from selection.video import Video
+import sys
+sys.path.append('..\\ffmpeg\\bin')
 
 # TODO: Change from Static Output Location...
 OUTPUT = 'C:\\Users\\Brandon\\Videos\\'

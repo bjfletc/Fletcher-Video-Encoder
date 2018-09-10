@@ -14,6 +14,7 @@ from tkinter.filedialog import askopenfilename, askdirectory # will need later o
 from selection import directory, video
 from encoder import ffmpeg_command
 import fletcher_encoder
+import ffmpeg_downloader
 # TODO: learn how to create a SplashScreen OOP class
 fletcher_video_encoder = fletcher_encoder.Encoder()
 
@@ -37,6 +38,17 @@ def video_button_command():
     fletcher_video_encoder.start_subprocess_thread(ffmpeg_command.ffmpeg_cmd(chosen_video))
     return chosen_video
 
+
+# sloppy code... refactor later...
+current_directory = os.getcwd()
+os.chdir('..')
+program_root_directory = os.getcwd()
+print(program_root_directory)
+
+if os.path.isdir('ffmpeg') == False:
+    ffmpeg_downloader.download_ffmpeg()
+
+os.chdir(current_directory)
 
 root = Tk()
 root.geometry('500x500')

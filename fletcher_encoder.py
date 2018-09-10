@@ -11,6 +11,7 @@ import sys
 import os
 dir_to_append = os.getcwd()
 sys.path.append(dir_to_append)
+sys.path.append('\\ffmpeg\\bin')
 
 
 class Encoder:
