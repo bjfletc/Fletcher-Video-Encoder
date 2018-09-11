@@ -26,4 +26,4 @@ def download_ffmpeg():
 
 
 if __name__ == '__main__':
-    download_ffmpeg()
+    print('do nothing...')
