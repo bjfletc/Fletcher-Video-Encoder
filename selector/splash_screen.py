@@ -4,19 +4,22 @@
 # GitHub: https://github.com/bjfletc
 
 """splash_screen.py: When the program is run, will be the screen that they see first."""
-import sys
+
 import os
 import threading
-path_to_append = os.getcwd()
-path_to_append = path_to_append[0:path_to_append.rfind('\\')]
-sys.path.append(path_to_append)
 from tkinter import *
 from gui import btn_cmds
 import ffmpeg_downloader
 import fletcher_encoder
-# TODO: learn how to create a SplashScreen OOP class
+import sys
+path_to_append = os.getcwd()
+path_to_append = path_to_append[0:path_to_append.rfind('\\')]
+sys.path.append(path_to_append)
+
+
 fletcher_video_encoder = fletcher_encoder.Encoder()
 
+# main windows that the program resides in
 root = Tk()
 root.geometry('500x500')
 root.iconbitmap('../img/fletcher-family-crest.jpg.ico')
@@ -32,7 +35,7 @@ def do_something():
 
 root.protocol('WM_DELETE_WINDOW', do_something)  # root is your root window
 
-# add GUI components
+
 # TODO Create Separate Class for GUI
 
 label_frame = Frame(root)
@@ -61,7 +64,7 @@ current_directory = os.getcwd()
 os.chdir('..')
 program_root_directory = os.getcwd()
 print(program_root_directory)
-# os.chdir(current_directory)
+
 
 
 if os.path.isdir('ffmpeg') == False:
