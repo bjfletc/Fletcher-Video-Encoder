@@ -6,16 +6,8 @@
 """btn_cmds.py: module that holds the response for the event-listeners in the
     buttons of the GUI."""
 
-import sys
-import os
-path_to_append = os.getcwd()
-path_to_append = path_to_append[0:path_to_append.rfind('\\')]
-sys.path.append(path_to_append)
-print(path_to_append)
-
 from tkinter.filedialog import askopenfilename, askdirectory
 from selection import directory, video
-# from selector import splash_screen
 from encoder import ffmpeg_command
 import fletcher_encoder
 
