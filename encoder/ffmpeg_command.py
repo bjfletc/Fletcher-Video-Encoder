@@ -6,10 +6,14 @@
 """command.py: will return the string version of the ffmpeg command."""
 from selection.video import Video
 import sys
+import os
 sys.path.append('..\\ffmpeg\\bin')
 
+username = os.getlogin()
+video_dir = 'C:\\Users\\' + username + '\\Videos\\'
+print(video_dir)
 # TODO: Change from Static Output Location...
-OUTPUT = 'C:\\Users\\Brandon\\Videos\\'
+OUTPUT = video_dir
 
 
 def ffmpeg_cmd(video=Video('')):
