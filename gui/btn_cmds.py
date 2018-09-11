@@ -9,14 +9,17 @@
 from tkinter.filedialog import askopenfilename, askdirectory
 from selection import directory, video
 from encoder import ffmpeg_command
+#from selector import splash_screen
 import fletcher_encoder
 
+# TODO: figure out a way to change the label of the splash screen...
 encoding_engine = fletcher_encoder.Encoder()
 
 
 def dir_btn_cmd():
     path_to_directory = askdirectory(initialdir='C:\\Users\\')
     chosen_directory = directory.Directory(path_to_directory)
+    #splash_screen.name_of_file_or_directory_label.config(text=chosen_directory)
     return chosen_directory
 
 
@@ -24,6 +27,7 @@ def vid_btn_cmd():
     path_to_video = askopenfilename(initialdir='C:\\Users\\', filetypes=(('MP4', '*.mp4'),
                                     ('AVI', '*.avi'), ('MKV', '*.mkv')))
     chosen_video = video.Video(path_to_video)
+    #splash_screen.name_of_file_or_directory_label.config(text=chosen_video)
     encoding_engine.start_subprocess_thread(ffmpeg_command.ffmpeg_cmd(chosen_video))
     return chosen_video
 
