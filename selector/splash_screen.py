@@ -21,7 +21,7 @@ fletcher_video_encoder = fletcher_encoder.Encoder()
 
 # TODO: create module for each command... open in Users default Videos...
 def directory_button_command():
-    path_to_directory = askdirectory(initialdir='W:\Brandon J. Fletcher\Videos')
+    path_to_directory = askdirectory(initialdir='C:\\Users\\')
     chosen_directory = directory.Directory(path_to_directory)
     print(path_to_directory)
     name_of_file_or_directory_label.config(text='Encoding: ' + chosen_directory.videos()[0])
@@ -29,7 +29,7 @@ def directory_button_command():
 
 
 def video_button_command():
-    path_to_video = askopenfilename(initialdir='W:\Brandon J. Fletcher\Videos', filetypes = (('MP4', '*.mp4'),
+    path_to_video = askopenfilename(initialdir='C:\\Users\\', filetypes = (('MP4', '*.mp4'),
                                     ('AVI', '*.avi'), ('MKV', '*.mkv')))
     chosen_video = video.Video(path_to_video)
     print(path_to_video)
