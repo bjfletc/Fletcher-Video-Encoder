@@ -8,14 +8,13 @@
 import os
 import threading
 from tkinter import *
-from gui import btn_cmds
-import ffmpeg_downloader
-import fletcher_encoder
 import sys
 path_to_append = os.getcwd()
 path_to_append = path_to_append[0:path_to_append.rfind('\\')]
 sys.path.append(path_to_append)
-
+from gui import btn_cmds
+import ffmpeg_downloader
+import fletcher_encoder
 
 fletcher_video_encoder = fletcher_encoder.Encoder()
 
@@ -66,7 +65,6 @@ program_root_directory = os.getcwd()
 print(program_root_directory)
 
 
-
 if os.path.isdir('ffmpeg') == False:
     download_thread = threading.Thread(target=ffmpeg_downloader.download_ffmpeg())
     download_thread.daemon = True
@@ -79,6 +77,3 @@ root.title('Fletcher Video Encoder')
 os.chdir(current_directory)
 
 root.mainloop()
-
-if __name__ == '__main__':
-    print('Do nothing...')
