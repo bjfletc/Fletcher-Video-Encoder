@@ -7,6 +7,9 @@
 
 from gui import btn_cmds    # needed for the main consoles dir/vid buttons
 from tkinter import *
+import os
+import threading
+import ffmpeg_downloader
 
 
 # creating a class definition of what the main console should display as
@@ -38,16 +41,28 @@ class MainConsole:
 
     def start(self):
         # verify ffmpeg installation...
+        # TODO (#1): verify thread functions properly in this module...
+        self.verify_ffmpeg_installation()
         return self.root.mainloop()
 
     # TODO: method to check validity of local version of ffmpeg...
-    """
     def verify_ffmpeg_installation(self):
-        if True:
-            # return true and continue with program...
-        elif False:
-            # install ffmpeg... then continue with program...
-    """
+
+        cwd = os.getcwd()
+        os.chdir('..')
+
+        if os.path.isdir('ffmpeg'):
+            print('ffmpeg already successfully installed on system.')
+
+        else:
+            download_thread = threading.Thread(target=ffmpeg_downloader.download_ffmpeg())
+            download_thread.daemon = True
+            tmp_label = Label(text='Please wait while I install ffmpeg...').pack()
+            download_thread.start()
+            tmp_label.config(text='Finished... you may choose a Video now...')
+
+        os.chdir(cwd)
+        return self.root.title('Fletcher Video Encoder -- FFMPEG Successfully Installed')
 
     # TODO: create method that terminates thread
     """
@@ -55,10 +70,6 @@ class MainConsole:
         # terminate thread...
         return ...
     """
-
-    # used to change the label to the name of whatever is being encoded currently
-    def set_contents_of_video_being_encoded_label(self, string_name_of_video_or_directory):
-        return self.name_of_video_being_encoded_label.config(text=string_name_of_video_or_directory)
 
 
 if __name__ == '__main__':
