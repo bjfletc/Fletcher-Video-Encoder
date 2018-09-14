@@ -57,6 +57,7 @@ class MainConsole:
         else:
             download_thread = threading.Thread(target=ffmpeg_downloader.download_ffmpeg())
             download_thread.daemon = True
+            self.root.title('Fletcher Video Encoder -- Installing FFMPEG')
             tmp_label = Label(text='Please wait while I install ffmpeg...').pack()
             download_thread.start()
             tmp_label.config(text='Finished... you may choose a Video now...')
