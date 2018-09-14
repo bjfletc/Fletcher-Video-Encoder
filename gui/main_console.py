@@ -5,6 +5,9 @@
 
 """main_console.py: will house the launch screen of the application. """
 
+# TODO: find way to avoid putting this at the top of each module...
+import sys
+sys.path.append('../')
 from gui import btn_cmds    # needed for the main consoles dir/vid buttons
 from tkinter import *
 import os
@@ -37,7 +40,7 @@ class MainConsole:
     video_button = Button(video_button_frame, text='Video', command=btn_cmds.vid_btn_cmd)
     video_button.pack(anchor='center', expand=YES)
 
-    # TODO: discover way to change title depending on if ffmpeg is installed or not
+    # TODO: discover way to change title & label depending on if ffmpeg is installed or not
 
     def start(self):
         # verify ffmpeg installation...

@@ -11,8 +11,10 @@ from tkinter.filedialog import askopenfilename, askdirectory
 from selection import directory, video
 from encoder import ffmpeg_command
 import fletcher_encoder
+import sys
+sys.path.append('../')
 
-# TODO: figure out a way to change the label of the splash screen...
+
 encoding_engine = fletcher_encoder.Encoder()
 
 
