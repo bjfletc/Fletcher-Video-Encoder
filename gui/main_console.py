@@ -18,7 +18,7 @@ class MainConsole:
     root = Tk()     # main window of the application
     root.geometry('500x500')
     root.iconbitmap('../img/fletcher-family-crest.jpg.ico')     # Fletcher Family Crest for Window
-    root.title('Fletcher Video Encoder')
+    root.title('Fletcher Video Encoder -- Installing FFMPEG')
 
     buttons_frame = Frame(root)
     buttons_frame.pack(side=BOTTOM, fill=X, ipady=25)
@@ -27,7 +27,6 @@ class MainConsole:
     directory_button_frame = Frame(buttons_frame, bg='green')
     directory_button_frame.pack(side=LEFT, fill=Y, ipadx=100)
 
-    # COMPLETED: whenever btn is pressed change label for what is being encoded...
     directory_button = Button(directory_button_frame, text='Directory', command=btn_cmds.dir_btn_cmd)
     directory_button.pack(anchor='center', expand=YES)
 
@@ -35,37 +34,25 @@ class MainConsole:
     video_button_frame = Frame(buttons_frame, bg='yellow')
     video_button_frame.pack(side=RIGHT, fill=Y, ipadx=125)
 
-    # COMPLETED: whenever btn is pressed change label for what is being encoded...
     video_button = Button(video_button_frame, text='Video', command=btn_cmds.vid_btn_cmd)
     video_button.pack(anchor='center', expand=YES)
 
     # TODO: discover way to change title depending on if ffmpeg is installed or not
-    """
-    if os.path.isdir('ffmpeg'):
-        os.chdir('gui')
-        tmp_label = Label(text='You may now proceed with selecting a video...').pack()
-    else:
-        tmp_label = Label(text='Please wait while I install ffmpeg...').pack()
-        root.title('Fletcher Video Encoder -- Installing FFMPEG')
-    """
 
     def start(self):
         # verify ffmpeg installation...
-        # COMPLETED (#1): verify thread functions properly in this module...
         self.verify_ffmpeg_installation()
 
         return self.root.mainloop()
 
-    # COMPLETED: method to check validity of local version of ffmpeg...
     def verify_ffmpeg_installation(self):
 
         os.chdir('../')     # change so ffmpeg installs in the root dir
 
         if os.path.isdir('ffmpeg'):
-            print('ffmpeg already successfully installed on system.')
             self.root.title('Fletcher Video Encoder -- FFMPEG Successfully Installed')
         else:
-            download_thread = threading.Thread(target=ffmpeg_downloader.download_ffmpeg)
+            download_thread = threading.Thread(name='Installer', target=ffmpeg_downloader.download_ffmpeg)
             download_thread.daemon = True
             download_thread.start()
 
