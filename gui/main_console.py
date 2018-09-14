@@ -39,31 +39,37 @@ class MainConsole:
     video_button = Button(video_button_frame, text='Video', command=btn_cmds.vid_btn_cmd)
     video_button.pack(anchor='center', expand=YES)
 
+    # TODO: discover way to change title depending on if ffmpeg is installed or not
+    """
+    if os.path.isdir('ffmpeg'):
+        os.chdir('gui')
+        tmp_label = Label(text='You may now proceed with selecting a video...').pack()
+    else:
+        tmp_label = Label(text='Please wait while I install ffmpeg...').pack()
+        root.title('Fletcher Video Encoder -- Installing FFMPEG')
+    """
+
     def start(self):
         # verify ffmpeg installation...
-        # TODO (#1): verify thread functions properly in this module...
+        # COMPLETED (#1): verify thread functions properly in this module...
         self.verify_ffmpeg_installation()
+
         return self.root.mainloop()
 
-    # TODO: method to check validity of local version of ffmpeg...
+    # COMPLETED: method to check validity of local version of ffmpeg...
     def verify_ffmpeg_installation(self):
 
-        cwd = os.getcwd()
-        os.chdir('..')
+        os.chdir('../')     # change so ffmpeg installs in the root dir
 
         if os.path.isdir('ffmpeg'):
             print('ffmpeg already successfully installed on system.')
-
+            self.root.title('Fletcher Video Encoder -- FFMPEG Successfully Installed')
         else:
-            download_thread = threading.Thread(target=ffmpeg_downloader.download_ffmpeg())
+            download_thread = threading.Thread(target=ffmpeg_downloader.download_ffmpeg)
             download_thread.daemon = True
-            self.root.title('Fletcher Video Encoder -- Installing FFMPEG')
-            tmp_label = Label(text='Please wait while I install ffmpeg...').pack()
             download_thread.start()
-            tmp_label.config(text='Finished... you may choose a Video now...')
 
-        os.chdir(cwd)
-        return self.root.title('Fletcher Video Encoder -- FFMPEG Successfully Installed')
+        return print('...Installing...')
 
     # TODO: create method that terminates thread
     """
@@ -75,4 +81,4 @@ class MainConsole:
 
 if __name__ == '__main__':
     test_flight = MainConsole().start()
-    test_flight.set_contents_of_video_being_encoded_label("Magic...")
+    # test_flight.set_contents_of_video_being_encoded_label("Magic...")
