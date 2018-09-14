@@ -18,6 +18,7 @@ encoding_engine = fletcher_encoder.Encoder()
 def dir_btn_cmd():
     path_to_directory = askdirectory(initialdir='C:\\Users\\')
     chosen_directory = directory.Directory(path_to_directory)
+    # TODO: add for in threading logic to encode all vids in a dir
     return chosen_directory
 
 
