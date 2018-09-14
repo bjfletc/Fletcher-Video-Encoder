@@ -17,12 +17,6 @@ class MainConsole:
     root.iconbitmap('../img/fletcher-family-crest.jpg.ico')     # Fletcher Family Crest for Window
     root.title('Fletcher Video Encoder')
 
-    name_of_video_being_encoded_frame = Frame(root)         # frame to house the name of what is being encoded
-    name_of_video_being_encoded_frame.pack(side=TOP, fill=X)
-
-    name_of_video_being_encoded_label = Label(name_of_video_being_encoded_frame)  # displays what is being encoded
-    name_of_video_being_encoded_label.pack()
-
     buttons_frame = Frame(root)
     buttons_frame.pack(side=BOTTOM, fill=X, ipady=25)
 
@@ -30,7 +24,7 @@ class MainConsole:
     directory_button_frame = Frame(buttons_frame, bg='green')
     directory_button_frame.pack(side=LEFT, fill=Y, ipadx=100)
 
-    # TODO: whenever btn is pressed change label for what is being encoded...
+    # COMPLETED: whenever btn is pressed change label for what is being encoded...
     directory_button = Button(directory_button_frame, text='Directory', command=btn_cmds.dir_btn_cmd)
     directory_button.pack(anchor='center', expand=YES)
 
@@ -38,11 +32,12 @@ class MainConsole:
     video_button_frame = Frame(buttons_frame, bg='yellow')
     video_button_frame.pack(side=RIGHT, fill=Y, ipadx=125)
 
-    # TODO: whenever btn is pressed change label for what is being encoded...
+    # COMPLETED: whenever btn is pressed change label for what is being encoded...
     video_button = Button(video_button_frame, text='Video', command=btn_cmds.vid_btn_cmd)
     video_button.pack(anchor='center', expand=YES)
 
     def start(self):
+        # verify ffmpeg installation...
         return self.root.mainloop()
 
     # TODO: method to check validity of local version of ffmpeg...
