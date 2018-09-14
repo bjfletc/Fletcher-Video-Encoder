@@ -7,6 +7,7 @@
 import sys
 import os
 import threading
+# TODO: Figure Out Proper sys.path.append methodology...
 path_to_append = os.getcwd()
 path_to_append = path_to_append[0:path_to_append.rfind('\\')]
 sys.path.append(path_to_append)
@@ -18,6 +19,7 @@ import fletcher_encoder
 import ffmpeg_downloader
 # TODO: learn how to create a SplashScreen OOP class
 fletcher_video_encoder = fletcher_encoder.Encoder()
+
 
 # TODO: create module for each command... open in Users default Videos...
 def directory_button_command():
