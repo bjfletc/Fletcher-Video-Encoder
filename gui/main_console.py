@@ -24,6 +24,23 @@ class MainConsole:
     root.iconbitmap('../img/fletcher-family-crest.jpg.ico')     # Fletcher Family Crest for Window
     root.title('Fletcher Video Encoder -- Installing FFMPEG')
 
+    # TODO: Create Method that Closes Program and Stops Thread...
+    """
+        Older Code from splash_screen.py:
+        ---------------------------------
+        
+        # adding for TEST0
+        def do_something():
+            # check if saving
+            # if not:
+            fletcher_video_encoder.stop_subprocess_thread()
+            root.destroy()
+
+
+        root.protocol('WM_DELETE_WINDOW', do_something)  # root is your root window
+        
+    """
+
     buttons_frame = Frame(root)
     buttons_frame.pack(side=BOTTOM, fill=X, ipady=25)
 
@@ -41,7 +58,7 @@ class MainConsole:
     video_button = Button(video_button_frame, text='Video', command=btn_cmds.vid_btn_cmd)
     video_button.pack(anchor='center', expand=YES)
 
-    # TODO: discover way to change title & label depending on if ffmpeg is installed or not
+    # COMPLETED: discover way to change title & label depending on if ffmpeg is installed or not
     def check_download(self):
 
         tmp_label = Label(self.root)
@@ -59,13 +76,13 @@ class MainConsole:
 
     def start(self):
         # verify ffmpeg installation...
-        self.verify_ffmpeg_installation()
+        self.install_ffmpeg()
         check_download_thread = threading.Thread(name='ffmpeg_download', target=self.check_download)
         check_download_thread.daemon = True
         check_download_thread.start()
         return self.root.mainloop()
 
-    def verify_ffmpeg_installation(self):
+    def install_ffmpeg(self):
 
         os.chdir('../')     # change so ffmpeg installs in the root dir
 
@@ -78,14 +95,6 @@ class MainConsole:
 
         return print('...Installing...')
 
-    # TODO: create method that terminates thread
-    """
-    def exit(self):
-        # terminate thread...
-        return ...
-    """
-
 
 if __name__ == '__main__':
     test_flight = MainConsole().start()
-    # test_flight.set_contents_of_video_being_encoded_label("Magic...")

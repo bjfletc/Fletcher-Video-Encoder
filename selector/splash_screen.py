@@ -57,7 +57,7 @@ def do_something():
 root.protocol('WM_DELETE_WINDOW', do_something)  # root is your root window
 
 # add GUI components
-# TODO Create Separate Class for GUI
+# COMPLETED Create Separate Class for GUI
 
 label_frame = Frame(root)
 label_frame.pack(side=TOP, fill=X)
