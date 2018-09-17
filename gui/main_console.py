@@ -22,7 +22,7 @@ class MainConsole:
     root = Tk()     # main window of the application
     root.geometry('500x500')
     root.iconbitmap('../img/fletcher-family-crest.jpg.ico')     # Fletcher Family Crest for Window
-    root.title('Fletcher Video Encoder -- Installing FFMPEG')
+    root.title('Fletcher Video Encoder')
 
     # TODO: Create Method that Closes Program and Stops Thread...
     """
@@ -66,10 +66,13 @@ class MainConsole:
         print(os.getcwd())
         print(str(os.path.isdir('ffmpeg')))
         while not os.path.isdir('ffmpeg'):
+            self.root.title('Fletcher Video Encoder -- Installing FFMPEG')
             tmp_label.config(text='Installing FFMPEG... Please wait...')
 
+        self.root.title('Fletcher Video Encoder -- FFMPEG Successfully Installed')
         tmp_label.config(text='FFMPEG Successfully Installed.')
         time.sleep(5)
+        self.root.title('Fletcher Video Encoder')
         tmp_label.config(text='Continue by Selecting a Video...')
         time.sleep(5)
         tmp_label.destroy()

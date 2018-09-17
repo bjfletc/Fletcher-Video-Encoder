@@ -1,6 +1,5 @@
 
 from urllib.request import urlopen, Request
-from tkinter import *
 import zipfile
 import shutil
 import os
@@ -13,7 +12,6 @@ headers = {'User-Agent': 'Mozilla/5.0'}
 
 
 def download_ffmpeg():
-    Label(text='Installing FFMPEG... Please Wait...').pack()
     req = Request(url=reg_url, headers=headers)
 
     with urlopen(req) as response, open(file_name, 'wb') as out_file:
