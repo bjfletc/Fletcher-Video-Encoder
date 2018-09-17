@@ -10,6 +10,7 @@ import sys
 sys.path.append('../')
 from gui import btn_cmds    # needed for the main consoles dir/vid buttons
 from tkinter import *
+import time
 import os
 import threading
 import ffmpeg_downloader
@@ -41,11 +42,27 @@ class MainConsole:
     video_button.pack(anchor='center', expand=YES)
 
     # TODO: discover way to change title & label depending on if ffmpeg is installed or not
+    def check_download(self):
+
+        tmp_label = Label(self.root)
+        tmp_label.pack()
+        print(os.getcwd())
+        print(str(os.path.isdir('ffmpeg')))
+        while not os.path.isdir('ffmpeg'):
+            tmp_label.config(text='Installing FFMPEG... Please wait...')
+
+        tmp_label.config(text='FFMPEG Successfully Installed.')
+        time.sleep(5)
+        tmp_label.config(text='Continue by Selecting a Video...')
+        time.sleep(5)
+        tmp_label.destroy()
 
     def start(self):
         # verify ffmpeg installation...
         self.verify_ffmpeg_installation()
-
+        check_download_thread = threading.Thread(name='ffmpeg_download', target=self.check_download)
+        check_download_thread.daemon = True
+        check_download_thread.start()
         return self.root.mainloop()
 
     def verify_ffmpeg_installation(self):
