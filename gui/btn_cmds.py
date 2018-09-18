@@ -35,5 +35,10 @@ def vid_btn_cmd():
     return chosen_video
 
 
+def stop_whatever_you_are_doing():
+    encoding_engine.stop_subprocess_thread()
+    return exit()
+
+
 if __name__ == '__main__':
     print('Do Nothing...')

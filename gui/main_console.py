@@ -24,22 +24,10 @@ class MainConsole:
     root.iconbitmap('../img/fletcher-family-crest.jpg.ico')     # Fletcher Family Crest for Window
     root.title('Fletcher Video Encoder')
 
-    # TODO: Create Method that Closes Program and Stops Thread...
-    """
-        Older Code from splash_screen.py:
-        ---------------------------------
-        
-        # adding for TEST0
-        def do_something():
-            # check if saving
-            # if not:
-            fletcher_video_encoder.stop_subprocess_thread()
-            root.destroy()
-
-
-        root.protocol('WM_DELETE_WINDOW', do_something)  # root is your root window
-        
-    """
+    # COMPLETED: Create Method that Closes Program and Stops Thread...
+    # need check here to see if something is being encoded and if this protocol is needed or not.
+    if threading.active_count() >= 1:
+        root.protocol('WM_DELETE_WINDOW', btn_cmds.stop_whatever_you_are_doing)
 
     buttons_frame = Frame(root)
     buttons_frame.pack(side=BOTTOM, fill=X, ipady=25)
@@ -57,6 +45,12 @@ class MainConsole:
 
     video_button = Button(video_button_frame, text='Video', command=btn_cmds.vid_btn_cmd)
     video_button.pack(anchor='center', expand=YES)
+
+    def check_thread(self):
+        print(str(threading.active_count()))
+        print(str(threading.active_count()))
+        self.root.title('Thread Test')
+        return print('testing...')
 
     # COMPLETED: discover way to change title & label depending on if ffmpeg is installed or not
     def check_download(self):
@@ -83,6 +77,7 @@ class MainConsole:
         check_download_thread = threading.Thread(name='ffmpeg_download', target=self.check_download)
         check_download_thread.daemon = True
         check_download_thread.start()
+        self.check_thread()
         return self.root.mainloop()
 
     def install_ffmpeg(self):
@@ -95,7 +90,7 @@ class MainConsole:
             download_thread = threading.Thread(name='Installer', target=ffmpeg_downloader.download_ffmpeg)
             download_thread.daemon = True
             download_thread.start()
-
+        print(str(threading.active_count()))
         return print('...Installing...')
 
 
