@@ -21,8 +21,14 @@ encoding_engine = fletcher_encoder.Encoder()
 def dir_btn_cmd():
     path_to_directory = askdirectory(initialdir='C:\\Users\\')
     chosen_directory = directory.Directory(path_to_directory)
-    Label(text=chosen_directory.name()).pack()
-    # TODO: add for in threading logic to encode all vids in a dir
+    list_of_videos_in_directory = chosen_directory.videos()
+    Label(text="Encoding: " + chosen_directory.name()).pack()
+    # TODO: make dir function wait until previous video is completed encoding to start the next
+    for current_video in list_of_videos_in_directory:
+        print(current_video.complete_path())
+        print(str(current_video))
+        encoding_engine.start_subprocess_thread(ffmpeg_command.ffmpeg_cmd(current_video))
+
     return chosen_directory
 
 

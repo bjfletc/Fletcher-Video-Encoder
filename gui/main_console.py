@@ -46,12 +46,6 @@ class MainConsole:
     video_button = Button(video_button_frame, text='Video', command=btn_cmds.vid_btn_cmd)
     video_button.pack(anchor='center', expand=YES)
 
-    def check_thread(self):
-        print(str(threading.active_count()))
-        print(str(threading.active_count()))
-        self.root.title('Thread Test')
-        return print('testing...')
-
     # COMPLETED: discover way to change title & label depending on if ffmpeg is installed or not
     def check_download(self):
 
@@ -77,7 +71,6 @@ class MainConsole:
         check_download_thread = threading.Thread(name='ffmpeg_download', target=self.check_download)
         check_download_thread.daemon = True
         check_download_thread.start()
-        self.check_thread()
         return self.root.mainloop()
 
     def install_ffmpeg(self):
