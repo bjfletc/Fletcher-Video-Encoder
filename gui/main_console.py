@@ -20,8 +20,9 @@ import ffmpeg_downloader
 class MainConsole:
 
     root = Tk()     # main window of the application
-    root.geometry('500x500')
+    root.geometry('900x400')
     root.iconbitmap('../img/fletcher-family-crest.jpg.ico')     # Fletcher Family Crest for Window
+    root.configure(background="#535760")
     root.title('Fletcher Video Encoder')
 
     # COMPLETED: Create Method that Closes Program and Stops Thread...
@@ -56,9 +57,11 @@ class MainConsole:
         while not os.path.isdir('ffmpeg'):
             self.root.title('Fletcher Video Encoder -- Installing FFMPEG')
             tmp_label.config(text='Installing FFMPEG... Please wait...')
+            tmp_label.config(background="#535760")
 
         self.root.title('Fletcher Video Encoder -- FFMPEG Successfully Installed')
         tmp_label.config(text='FFMPEG Successfully Installed.')
+        tmp_label.config(background="#535760")
         time.sleep(5)
         self.root.title('Fletcher Video Encoder')
         tmp_label.config(text='Continue by Selecting a Video...')

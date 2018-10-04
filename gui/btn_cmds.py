@@ -27,7 +27,8 @@ def dir_btn_cmd():
     for current_video in list_of_videos_in_directory:
         print(current_video.complete_path())
         print(str(current_video))
-        encoding_engine.start_subprocess_thread(ffmpeg_command.ffmpeg_cmd(current_video))
+        current_thread = encoding_engine.start_subprocess_thread(ffmpeg_command.ffmpeg_cmd(current_video))
+        current_thread.wait()
 
     return chosen_directory
 
