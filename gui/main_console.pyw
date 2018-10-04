@@ -20,26 +20,15 @@ import ffmpeg_downloader
 class MainConsole:
 
     root = Tk()     # main window of the application
-    root.geometry('500x500')
+    root.geometry('900x400')
     root.iconbitmap('../img/fletcher-family-crest.jpg.ico')     # Fletcher Family Crest for Window
+    root.configure(background="#535760")
     root.title('Fletcher Video Encoder')
 
-    # TODO: Create Method that Closes Program and Stops Thread...
-    """
-        Older Code from splash_screen.py:
-        ---------------------------------
-        
-        # adding for TEST0
-        def do_something():
-            # check if saving
-            # if not:
-            fletcher_video_encoder.stop_subprocess_thread()
-            root.destroy()
-
-
-        root.protocol('WM_DELETE_WINDOW', do_something)  # root is your root window
-        
-    """
+    # COMPLETED: Create Method that Closes Program and Stops Thread...
+    # need check here to see if something is being encoded and if this protocol is needed or not.
+    if threading.active_count() >= 1:
+        root.protocol('WM_DELETE_WINDOW', btn_cmds.stop_whatever_you_are_doing)
 
     buttons_frame = Frame(root)
     buttons_frame.pack(side=BOTTOM, fill=X, ipady=25)
@@ -68,9 +57,11 @@ class MainConsole:
         while not os.path.isdir('ffmpeg'):
             self.root.title('Fletcher Video Encoder -- Installing FFMPEG')
             tmp_label.config(text='Installing FFMPEG... Please wait...')
+            tmp_label.config(background="#535760")
 
         self.root.title('Fletcher Video Encoder -- FFMPEG Successfully Installed')
         tmp_label.config(text='FFMPEG Successfully Installed.')
+        tmp_label.config(background="#535760")
         time.sleep(5)
         self.root.title('Fletcher Video Encoder')
         tmp_label.config(text='Continue by Selecting a Video...')
@@ -95,7 +86,7 @@ class MainConsole:
             download_thread = threading.Thread(name='Installer', target=ffmpeg_downloader.download_ffmpeg)
             download_thread.daemon = True
             download_thread.start()
-
+        print(str(threading.active_count()))
         return print('...Installing...')
 
 
