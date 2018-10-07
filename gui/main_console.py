@@ -30,22 +30,23 @@ class MainConsole:
     if threading.active_count() >= 1:
         root.protocol('WM_DELETE_WINDOW', btn_cmds.stop_whatever_you_are_doing)
 
+    '''
     buttons_frame = Frame(root)
     buttons_frame.pack(side=BOTTOM, fill=X, ipady=25)
-
+    '''
     # [Directory]
-    directory_button_frame = Frame(buttons_frame, bg='green')
-    directory_button_frame.pack(side=LEFT, fill=Y, ipadx=100)
+    # directory_button_frame = Frame(buttons_frame, bg='green')
+    #directory_button_frame.pack(side=LEFT, fill=Y, ipadx=100)
 
-    directory_button = Button(directory_button_frame, text='Directory', command=btn_cmds.dir_btn_cmd)
-    directory_button.pack(anchor='center', expand=YES)
+    directory_button = Button(text='Directory', command=btn_cmds.dir_btn_cmd)
+    directory_button.pack(side=LEFT, expand=YES)
 
     # [Video]
-    video_button_frame = Frame(buttons_frame, bg='yellow')
-    video_button_frame.pack(side=RIGHT, fill=Y, ipadx=125)
+    #video_button_frame = Frame(buttons_frame, bg='yellow')
+    #video_button_frame.pack(side=RIGHT, fill=Y, ipadx=125)
 
-    video_button = Button(video_button_frame, text='Video', command=btn_cmds.vid_btn_cmd)
-    video_button.pack(anchor='center', expand=YES)
+    video_button = Button(text='Video', command=btn_cmds.vid_btn_cmd)
+    video_button.pack(side=LEFT, expand=YES)
 
     # COMPLETED: discover way to change title & label depending on if ffmpeg is installed or not
     def check_download(self):
