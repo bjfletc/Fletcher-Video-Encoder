@@ -25,27 +25,27 @@ class MainConsole:
     root.configure(background="#535760")
     root.title('Fletcher Video Encoder')
 
+    # TODO: add icon images then add buttons below icons
+    # video_file_icon = PhotoImage(file="../img/hard_drive_icon.png")
+    # video_file_icon.pack()
+
     # COMPLETED: Create Method that Closes Program and Stops Thread...
     # need check here to see if something is being encoded and if this protocol is needed or not.
     if threading.active_count() >= 1:
         root.protocol('WM_DELETE_WINDOW', btn_cmds.stop_whatever_you_are_doing)
 
-    '''
-    buttons_frame = Frame(root)
-    buttons_frame.pack(side=BOTTOM, fill=X, ipady=25)
-    '''
-    # [Directory]
-    # directory_button_frame = Frame(buttons_frame, bg='green')
-    #directory_button_frame.pack(side=LEFT, fill=Y, ipadx=100)
+    # COLOR CODE HEX BEFORE BUTTON HOVER: #3C4047
+
+    # [Directory] -- Button Style for Directory Button
 
     directory_button = Button(text='Directory', command=btn_cmds.dir_btn_cmd)
+    directory_button.config(bg='#3C4047', fg='white', width='20')
     directory_button.pack(side=LEFT, expand=YES)
 
-    # [Video]
-    #video_button_frame = Frame(buttons_frame, bg='yellow')
-    #video_button_frame.pack(side=RIGHT, fill=Y, ipadx=125)
+    # [Video] -- Video Style for Video Button
 
     video_button = Button(text='Video', command=btn_cmds.vid_btn_cmd)
+    video_button.config(bg='#3C4047', fg='white', width='20')
     video_button.pack(side=LEFT, expand=YES)
 
     # COMPLETED: discover way to change title & label depending on if ffmpeg is installed or not
